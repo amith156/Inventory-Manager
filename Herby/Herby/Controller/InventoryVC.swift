@@ -10,11 +10,12 @@ import Foundation
 import UIKit
 class InventoryVC : UIViewController {
     
+    @IBOutlet weak var inventoryAddButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
+        inventoryAddButton.backgroundColor = .blue
     }
     
     
