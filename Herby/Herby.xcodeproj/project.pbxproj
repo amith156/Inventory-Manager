@@ -137,8 +137,8 @@
 		2937DA4E234D459400B95535 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2937DA22234D3BCE00B95535 /* RecipesVC.swift */,
 				29E02DBA234E0520002A8821 /* InventoryVC.swift */,
+				2937DA22234D3BCE00B95535 /* RecipesVC.swift */,
 				29E02DBC234E076B002A8821 /* ShoppingListVC.swift */,
 				29E02DBE234E0900002A8821 /* AccountVC.swift */,
 			);
