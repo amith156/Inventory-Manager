@@ -101,10 +101,10 @@
 			children = (
 				2937DA1E234D3BCE00B95535 /* AppDelegate.swift */,
 				2937DA20234D3BCE00B95535 /* SceneDelegate.swift */,
-				2937DA22234D3BCE00B95535 /* ViewController.swift */,
-				2937DA24234D3BCE00B95535 /* Main.storyboard */,
+				2937DA4E234D459400B95535 /* Controller */,
+				2937DA50234D45D000B95535 /* View */,
+				2937DA4F234D45B400B95535 /* Model */,
 				2937DA27234D3BCF00B95535 /* Assets.xcassets */,
-				2937DA29234D3BCF00B95535 /* LaunchScreen.storyboard */,
 				2937DA2C234D3BCF00B95535 /* Info.plist */,
 			);
 			path = Herby;
@@ -126,6 +126,30 @@
 				2937DA42234D3BCF00B95535 /* Info.plist */,
 			);
 			path = HerbyUITests;
+			sourceTree = "<group>";
+		};
+		2937DA4E234D459400B95535 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2937DA22234D3BCE00B95535 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2937DA4F234D45B400B95535 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2937DA50234D45D000B95535 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2937DA29234D3BCF00B95535 /* LaunchScreen.storyboard */,
+				2937DA24234D3BCE00B95535 /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
