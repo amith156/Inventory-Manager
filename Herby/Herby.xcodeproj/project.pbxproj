@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		2937DA1F234D3BCE00B95535 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2937DA1E234D3BCE00B95535 /* AppDelegate.swift */; };
 		2937DA21234D3BCE00B95535 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2937DA20234D3BCE00B95535 /* SceneDelegate.swift */; };
-		2937DA23234D3BCE00B95535 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2937DA22234D3BCE00B95535 /* ViewController.swift */; };
+		2937DA23234D3BCE00B95535 /* RecipesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2937DA22234D3BCE00B95535 /* RecipesVC.swift */; };
 		2937DA26234D3BCE00B95535 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2937DA24234D3BCE00B95535 /* Main.storyboard */; };
 		2937DA28234D3BCF00B95535 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2937DA27234D3BCF00B95535 /* Assets.xcassets */; };
 		2937DA2B234D3BCF00B95535 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2937DA29234D3BCF00B95535 /* LaunchScreen.storyboard */; };
 		2937DA36234D3BCF00B95535 /* HerbyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2937DA35234D3BCF00B95535 /* HerbyTests.swift */; };
 		2937DA41234D3BCF00B95535 /* HerbyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2937DA40234D3BCF00B95535 /* HerbyUITests.swift */; };
+		29E02DBB234E0520002A8821 /* InventoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E02DBA234E0520002A8821 /* InventoryVC.swift */; };
+		29E02DBD234E076B002A8821 /* ShoppingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E02DBC234E076B002A8821 /* ShoppingListVC.swift */; };
+		29E02DBF234E0900002A8821 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E02DBE234E0900002A8821 /* AccountVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +41,7 @@
 		2937DA1B234D3BCE00B95535 /* Herby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Herby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2937DA1E234D3BCE00B95535 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2937DA20234D3BCE00B95535 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2937DA22234D3BCE00B95535 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2937DA22234D3BCE00B95535 /* RecipesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesVC.swift; sourceTree = "<group>"; };
 		2937DA25234D3BCE00B95535 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2937DA27234D3BCF00B95535 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2937DA2A234D3BCF00B95535 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +52,9 @@
 		2937DA3C234D3BCF00B95535 /* HerbyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HerbyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2937DA40234D3BCF00B95535 /* HerbyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerbyUITests.swift; sourceTree = "<group>"; };
 		2937DA42234D3BCF00B95535 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29E02DBA234E0520002A8821 /* InventoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryVC.swift; sourceTree = "<group>"; };
+		29E02DBC234E076B002A8821 /* ShoppingListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListVC.swift; sourceTree = "<group>"; };
+		29E02DBE234E0900002A8821 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +137,10 @@
 		2937DA4E234D459400B95535 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2937DA22234D3BCE00B95535 /* ViewController.swift */,
+				2937DA22234D3BCE00B95535 /* RecipesVC.swift */,
+				29E02DBA234E0520002A8821 /* InventoryVC.swift */,
+				29E02DBC234E076B002A8821 /* ShoppingListVC.swift */,
+				29E02DBE234E0900002A8821 /* AccountVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -283,9 +292,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2937DA23234D3BCE00B95535 /* ViewController.swift in Sources */,
+				2937DA23234D3BCE00B95535 /* RecipesVC.swift in Sources */,
+				29E02DBD234E076B002A8821 /* ShoppingListVC.swift in Sources */,
 				2937DA1F234D3BCE00B95535 /* AppDelegate.swift in Sources */,
 				2937DA21234D3BCE00B95535 /* SceneDelegate.swift in Sources */,
+				29E02DBB234E0520002A8821 /* InventoryVC.swift in Sources */,
+				29E02DBF234E0900002A8821 /* AccountVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,7 +479,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.amith.essex.Herby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -484,7 +496,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.amith.essex.Herby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

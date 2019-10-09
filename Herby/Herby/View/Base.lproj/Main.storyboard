@@ -7,33 +7,33 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--RecipesVC-->
+        <!--ShoppingListVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="RecipesVC" id="BYZ-38-t0r" customClass="ViewController" customModule="Herby" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ShoppingListVC" id="BYZ-38-t0r" customClass="ShoppingListVC" customModule="Herby" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Recipes" image="icons8-cooking-book-30" id="59b-Nd-WPR"/>
+                    <tabBarItem key="tabBarItem" title="Recipes" image="icons8-shopping-basket-30" id="59b-Nd-WPR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="901" y="-648"/>
         </scene>
-        <!--ShoppingListVC-->
+        <!--RecipesVC-->
         <scene sceneID="t9u-qD-PPq">
             <objects>
-                <viewController title="ShoppingListVC" id="iAq-af-se2" sceneMemberID="viewController">
+                <viewController title="RecipesVC" id="iAq-af-se2" customClass="RecipesVC" customModule="Herby" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9wp-UH-hyP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="WcB-aK-r1f"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Shopping List" image="icons8-shopping-basket-30" id="5K4-Dw-ZfL"/>
+                    <tabBarItem key="tabBarItem" title="Shopping List" image="icons8-cooking-book-30" id="5K4-Dw-ZfL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWt-MH-Zyf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,14 +42,14 @@
         <!--AccountVC-->
         <scene sceneID="Np0-VH-2od">
             <objects>
-                <viewController title="AccountVC" id="zgq-Qk-5n4" sceneMemberID="viewController">
+                <viewController title="AccountVC" id="zgq-Qk-5n4" customClass="AccountVC" customModule="Herby" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JfO-e2-2uY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="GdG-ve-26D"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="person.fill" catalog="system" id="xJC-OW-KPw"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="person.fill" catalog="system" id="xJC-OW-KPw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bID-bb-eJn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -58,7 +58,7 @@
         <!--InventoryVC-->
         <scene sceneID="CdL-OE-9kZ">
             <objects>
-                <viewController title="InventoryVC" id="pZ7-iy-sL5" sceneMemberID="viewController">
+                <viewController title="InventoryVC" id="pZ7-iy-sL5" customClass="InventoryVC" customModule="Herby" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uSb-IQ-M50">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
