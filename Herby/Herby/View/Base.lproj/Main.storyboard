@@ -79,21 +79,25 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="REl-Rc-OIa">
-                                        <rect key="frame" x="0.0" y="72" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="REl-Rc-OIa" id="daA-vG-0IK">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wu-Z1-p8t">
+                                <rect key="frame" x="333" y="732" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="1jq-bS-rwC"/>
+                                    <constraint firstAttribute="width" constant="60" id="ZSI-4F-brd"/>
+                                </constraints>
+                                <state key="normal" image="icons8-add-60"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <accessibility key="accessibilityConfiguration" label="label1">
                             <bool key="isElement" value="YES"/>
                         </accessibility>
+                        <constraints>
+                            <constraint firstItem="jQF-0z-pGF" firstAttribute="trailing" secondItem="2wu-Z1-p8t" secondAttribute="trailing" constant="21" id="fh8-Ts-X0t"/>
+                            <constraint firstItem="jQF-0z-pGF" firstAttribute="bottom" secondItem="2wu-Z1-p8t" secondAttribute="bottom" constant="21" id="o9Y-HP-AJj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jQF-0z-pGF"/>
                     </view>
                     <navigationItem key="navigationItem" title="Inventory" id="YJf-St-Hdg"/>
@@ -202,6 +206,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icons8-add-60" width="60" height="60"/>
         <image name="icons8-cooking-book-30" width="30" height="30"/>
         <image name="icons8-shopping-basket-30" width="30" height="30"/>
         <image name="icons8-warehouse-30" width="30" height="30"/>
