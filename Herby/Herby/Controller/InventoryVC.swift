@@ -15,14 +15,16 @@ class InventoryVC : UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        inventoryAddButton.backgroundColor = .blue
+//        inventoryAddButton.backgroundColor = .red
+//        let changedInventoryAddButton = UIImage(named: "icons8-add-60")?.withRenderingMode(.alwaysTemplate)
+//        let cha = UIButton.image(inventoryAddButton).
+//        inventoryAddButton.tintColor = .green
+//        inventoryAddButton.im = changedInventoryAddButton
+        
+//        changingAddButtonView()
+        inventoryAddButton.customFloatingActionButtonExt()
+        
     }
     
-    
-    
 }
-extension UITableView {
 
-    
-
-}

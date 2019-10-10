@@ -87,7 +87,7 @@
                                     <constraint firstAttribute="height" constant="60" id="1jq-bS-rwC"/>
                                     <constraint firstAttribute="width" constant="60" id="ZSI-4F-brd"/>
                                 </constraints>
-                                <state key="normal" image="add button"/>
+                                <state key="normal" image="icons8-plus-25"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -209,8 +209,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add button" width="60" height="60"/>
         <image name="icons8-cooking-book-30" width="30" height="30"/>
+        <image name="icons8-plus-25" width="25" height="25"/>
         <image name="icons8-shopping-basket-30" width="30" height="30"/>
         <image name="icons8-warehouse-30" width="30" height="30"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
