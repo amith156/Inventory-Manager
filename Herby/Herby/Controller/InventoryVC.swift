@@ -27,7 +27,7 @@ class InventoryVC : UIViewController{
         tableView.dataSource = self
         tableView.delegate = self
         inventoryAddButton.customFloatingActionButtonExt()
-        
+        loadData()
     }
     
     
@@ -74,6 +74,14 @@ class InventoryVC : UIViewController{
     }
     
     
+    func loadData() {
+        let request : NSFetchRequest<InventoryListEntity> = InventoryListEntity.fetchRequest()
+        do {
+            inventoryArrayList = try context.fetch(request)
+        } catch {
+            print("-----> error in loading or fetching DB, \(error)")
+        }
+    }
     
 }
 extension InventoryVC : UITableViewDataSource, UITableViewDelegate {
