@@ -70,6 +70,7 @@ class InventoryVC : UIViewController{
                 print("-----> error on saving data, \(error)")
             }
         tableView.reloadData()
+        print("---> \(inventoryArrayList.count)")
     }
     
     
