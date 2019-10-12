@@ -1,0 +1,6 @@
+framework module Pods_HerbyTests {
+  umbrella header "Pods-HerbyTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

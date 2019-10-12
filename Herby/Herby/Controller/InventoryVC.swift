@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import CoreData
+import Alamofire
+import SwiftyJSON
 
 class InventoryVC : UIViewController{
     
@@ -28,6 +30,10 @@ class InventoryVC : UIViewController{
         tableView.delegate = self
         inventoryAddButton.customFloatingActionButtonExt()
         loadData()
+        
+        let apiKey = "b503cdeb7efb4e5aa1b3f8c16a80312e"
+        let baseURL = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey=\(apiKey)"
+        urlSession(url: baseURL)
     }
     
     
@@ -82,6 +88,19 @@ class InventoryVC : UIViewController{
             print("-----> error in loading or fetching DB, \(error)")
         }
     }
+    
+    func urlSession(url : String) {
+        Alamofire.request(url).responseJSON {
+            (response) in
+            if response.result.isSuccess {
+                let json : JSON = JSON(response.result.value!)
+                print("-----> \(json)")
+            } else {
+                
+            }
+        }
+    }
+    
     
 }
 extension InventoryVC : UITableViewDataSource, UITableViewDelegate {
