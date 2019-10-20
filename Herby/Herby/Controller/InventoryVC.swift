@@ -56,13 +56,16 @@ class InventoryVC : UIViewController{
             }
             
         }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
         
         alert.addTextField { (alertText) in
             alertText.placeholder = "Please type your item!"
             textField = alertText
         }
         
+        alert.addAction(cancelButton)
         alert.addAction(action)
+        
         present(alert, animated: true, completion: .none)
         
         saveData()
