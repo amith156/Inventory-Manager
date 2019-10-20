@@ -31,9 +31,9 @@ class InventoryVC : UIViewController{
         inventoryAddButton.customFloatingActionButtonExt()
         loadData()
         
-        let apiKey = "b503cdeb7efb4e5aa1b3f8c16a80312e"
-        let baseURL = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey=\(apiKey)"
-        urlSession(url: baseURL)
+//        let apiKey = "b503cdeb7efb4e5aa1b3f8c16a80312e"
+//        let baseURL = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey=\(apiKey)"
+//        urlSession(url: baseURL)
     }
     
     
@@ -103,7 +103,8 @@ class InventoryVC : UIViewController{
     
     
 }
-extension InventoryVC : UITableViewDataSource, UITableViewDelegate {
+
+extension InventoryVC : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         inventoryArrayList.count
@@ -115,12 +116,14 @@ extension InventoryVC : UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+}
+
+extension InventoryVC : UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.saveData()
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    
     
 }
