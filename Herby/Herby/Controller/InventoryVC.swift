@@ -65,8 +65,17 @@ class InventoryVC : UIViewController{
         
         alert.addAction(cancelButton)
         alert.addAction(action)
+        alert.preferredAction = action
         
         present(alert, animated: true, completion: .none)
+        
+        if #available(iOS 13.0, *) {
+            alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = .secondarySystemBackground
+            
+        } else {
+            // Fallback on earlier versions
+        }
+        print("+++> \(alert.view.subviews.count)")
         
         saveData()
     }
