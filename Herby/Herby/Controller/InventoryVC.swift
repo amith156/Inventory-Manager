@@ -134,6 +134,9 @@ extension InventoryVC : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+//        context.delete(inventoryArrayList[indexPath.row])
+//        inventoryArrayList.remove(at: indexPath.row)
+        
         self.saveData()
         tableView.deselectRow(at: indexPath, animated: true)
     }
