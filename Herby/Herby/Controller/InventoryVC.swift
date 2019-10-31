@@ -39,45 +39,45 @@ class InventoryVC : UIViewController{
     
     @IBAction func inventoryAddButtonAction(_ sender: Any) {
         
-        var textField = UITextField()
-        
-        let alert =  UIAlertController(title: "Add item", message: "Please insert your inventory item.", preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "Add", style: .default) {
-            (act) in
-            
-            //this is NSManger obj for every new item
-            let newItem = InventoryListEntity(context: self.context)
-            
-            if textField.text!.isEmpty != true {
-                newItem.name = textField.text!
-                self.inventoryArrayList.append(newItem)
-                self.saveData()
-            }
-            
-        }
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alert.addTextField { (alertText) in
-            alertText.placeholder = "Please type your item!"
-            textField = alertText
-        }
-        
-        alert.addAction(cancelButton)
-        alert.addAction(action)
-        alert.preferredAction = action
-        
-        present(alert, animated: true, completion: .none)
-        
-        if #available(iOS 13.0, *) {
-            alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = .secondarySystemBackground
-            
-        } else {
-            // Fallback on earlier versions
-        }
-        print("+++> \(alert.view.subviews.count)")
-        
-        saveData()
+//        var textField = UITextField()
+//
+//        let alert =  UIAlertController(title: "Add item", message: "Please insert your inventory item.", preferredStyle: .alert)
+//
+//        let action = UIAlertAction(title: "Add", style: .default) {
+//            (act) in
+//
+//            //this is NSManger obj for every new item
+//            let newItem = InventoryListEntity(context: self.context)
+//
+//            if textField.text!.isEmpty != true {
+//                newItem.name = textField.text!
+//                self.inventoryArrayList.append(newItem)
+//                self.saveData()
+//            }
+//
+//        }
+//        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+//
+//        alert.addTextField { (alertText) in
+//            alertText.placeholder = "Please type your item!"
+//            textField = alertText
+//        }
+//
+//        alert.addAction(cancelButton)
+//        alert.addAction(action)
+//        alert.preferredAction = action
+//
+//        present(alert, animated: true, completion: .none)
+//
+//        if #available(iOS 13.0, *) {
+//            alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = .secondarySystemBackground
+//
+//        } else {
+//            // Fallback on earlier versions
+//        }
+//        print("+++> \(alert.view.subviews.count)")
+//
+//        saveData()
     }
     
     

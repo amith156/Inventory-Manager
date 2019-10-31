@@ -13,7 +13,12 @@ class FloatingActionButtonrotation: UIButton {
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
 //        transform = CGAffineTransform(rotationAngle: 180 * ( .pi / 180))
         UIView.animate(withDuration: 0.5) {
-            self.transform = CGAffineTransform(rotationAngle: 135 * ( .pi / 180))
+            if self.transform == .identity{
+                self.transform = CGAffineTransform(rotationAngle: 135 * ( .pi / 180))
+                
+            } else {
+                self.transform = .identity
+            }
         }
         return true
     }
