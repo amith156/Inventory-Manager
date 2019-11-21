@@ -21,14 +21,13 @@ class InventoryVC : UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var inventoryAddButton: UIButton!
+    @IBOutlet weak var inventoryAddButton: FloatingActionButtonRotation!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         tableView.dataSource = self
         tableView.delegate = self
-        inventoryAddButton.customFloatingActionButtonExt()
         loadData()
         
 //        let apiKey = "b503cdeb7efb4e5aa1b3f8c16a80312e"
