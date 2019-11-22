@@ -15,9 +15,9 @@ extension UIButton {
         tintColor = .white
         layer.cornerRadius = frame.height / 2
         layer.shadowOpacity = 0.5
-        layer.shadowRadius = 10
+        layer.shadowRadius = 15
         layer.shadowOffset = CGSize(width: 0, height: 2)
-//        layer.shadowPath = CGPath(roundedRect: CGRect(x: 10, y: 10, width: 50, height: 50), cornerWidth: 0, cornerHeight: 5, transform: nil)
+//        layer.shadowPath = CGPath(roundedRect: CGRect(x: 10, y: 10, width: 50, height: 50), cornerWidth: 5, cornerHeight: 5, transform: nil)
 //        layer.removeFromSuperlayer()
         
     }

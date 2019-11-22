@@ -18,15 +18,16 @@ class CircleViewForFloatingActionButton: UIView {
     }
     */
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        backgroundColor = UIColor.clear
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        backgroundColor = UIColor.clear
-//    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = UIColor.clear
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        backgroundColor = UIColor.yellow
+//        self.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+    }
     
     
     
