@@ -25,18 +25,13 @@ class FloatingActionButtonRotation: UIButton {
     
     
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-//        transform = CGAffineTransform(rotationAngle: 180 * ( .pi / 180))
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.4) {
             if self.transform == .identity{
                 self.transform = CGAffineTransform(rotationAngle: 135 * ( .pi / 180))
-                self.FABmenu.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-                self.FABmenu.backgroundColor = .black
 //                self.layer.shadowPath = CGPath(roundedRect: CGRect(x: 10, y: 10, width: 50, height: 50), cornerWidth: 0, cornerHeight: 5, transform: nil)
    
             } else {
                 self.transform = .identity
-                self.FABmenu.transform = .identity
-//                self.layer.shadowPath = CGPath(roundedRect: CGRect(x: 10, y: 10, width: 50, height: 50), cornerWidth: 0, cornerHeight: 5, transform: nil)
             }
         }
         
@@ -47,7 +42,7 @@ class FloatingActionButtonRotation: UIButton {
     
     func setUpFAB() {
         customFloatingActionButtonExt()     //this is an extension of FloatingActionButtonExtension.swift file.
-        self.FABmenu.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+//        self.FABmenu.transform = CGAffineTransform(scaleX: 1, y: 1)
         
         
     }

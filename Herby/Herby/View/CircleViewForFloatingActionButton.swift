@@ -25,7 +25,7 @@ class CircleViewForFloatingActionButton: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        backgroundColor = UIColor.yellow
+//        backgroundColor = UIColor.yellow
 //        self.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
     }
     

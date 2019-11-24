@@ -21,6 +21,7 @@ class InventoryVC : UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var menuViewFAB: CircleViewForFloatingActionButton!
     @IBOutlet weak var inventoryAddButton: FloatingActionButtonRotation!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,8 @@ class InventoryVC : UIViewController{
         tableView.delegate = self
         loadData()
         
+        menuViewFAB.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        
 //        let apiKey = "b503cdeb7efb4e5aa1b3f8c16a80312e"
 //        let baseURL = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey=\(apiKey)"
 //        urlSession(url: baseURL)
@@ -37,6 +40,18 @@ class InventoryVC : UIViewController{
     
     
     @IBAction func inventoryAddButtonAction(_ sender: Any) {
+        UIView.animate(withDuration: 0.4) {
+            
+            if self.menuViewFAB.transform == .identity {
+                //menu open
+                self.menuViewFAB.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+            } else {
+                //menu close
+                self.menuViewFAB.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+        }
+        
+        
         
 //        var textField = UITextField()
 //
