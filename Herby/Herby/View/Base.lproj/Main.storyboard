@@ -89,7 +89,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZC-Mi-enh" customClass="FloatingActionButtonRotation" customModule="Herby" customModuleProvider="target">
                                         <rect key="frame" x="149" y="18" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="icons8-handwritten-ocr-30"/>
+                                        <state key="normal" image="icons8-text-width-30-2"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oca-Ko-knt" customClass="FloatingActionButtonRotation" customModule="Herby" customModuleProvider="target">
                                         <rect key="frame" x="41" y="93" width="44" height="44"/>
@@ -99,12 +99,12 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsA-ZH-Lgf" customClass="FloatingActionButtonRotation" customModule="Herby" customModuleProvider="target">
                                         <rect key="frame" x="19" y="158" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="icons8-handwritten-ocr-30"/>
+                                        <state key="normal" image="icons8-barcode-30"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrL-nG-neN" customClass="FloatingActionButtonRotation" customModule="Herby" customModuleProvider="target">
                                         <rect key="frame" x="88" y="43" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="icons8-handwritten-ocr-30"/>
+                                        <state key="normal" image="icons8-vegetarian-food-30"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -130,7 +130,7 @@
                                     <constraint firstAttribute="height" constant="60" id="1jq-bS-rwC"/>
                                     <constraint firstAttribute="width" constant="60" id="ZSI-4F-brd"/>
                                 </constraints>
-                                <state key="normal" image="icons8-plus-25"/>
+                                <state key="normal" image="icons8-plus-35"/>
                                 <connections>
                                     <action selector="inventoryAddButtonAction:" destination="pZ7-iy-sL5" eventType="touchUpInside" id="vSG-3o-RMa"/>
                                 </connections>
@@ -272,10 +272,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icons8-barcode-30" width="30" height="30"/>
         <image name="icons8-cooking-book-30" width="30" height="30"/>
         <image name="icons8-handwritten-ocr-30" width="30" height="30"/>
-        <image name="icons8-plus-25" width="25" height="25"/>
+        <image name="icons8-plus-35" width="35" height="35"/>
         <image name="icons8-shopping-basket-30" width="30" height="30"/>
+        <image name="icons8-text-width-30-2" width="30" height="30"/>
+        <image name="icons8-vegetarian-food-30" width="30" height="30"/>
         <image name="icons8-warehouse-30" width="30" height="30"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
     </resources>
