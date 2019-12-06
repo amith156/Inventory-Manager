@@ -28,14 +28,12 @@ class FloatingActionButtonRotation: UIButton {
         UIView.animate(withDuration: 0.4) {
             if self.transform == .identity{
                 self.transform = CGAffineTransform(rotationAngle: 135 * ( .pi / 180))
-//                self.layer.shadowPath = CGPath(roundedRect: CGRect(x: 10, y: 10, width: 50, height: 50), cornerWidth: 0, cornerHeight: 5, transform: nil)
    
             } else {
                 self.transform = .identity
             }
         }
         
-//        UIView.animate(withDuration: <#T##TimeInterval#>, delay: <#T##TimeInterval#>, usingSpringWithDamping: <#T##CGFloat#>, initialSpringVelocity: <#T##CGFloat#>, options: <#T##UIView.AnimationOptions#>, animations: <#T##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
         return true
     }
     

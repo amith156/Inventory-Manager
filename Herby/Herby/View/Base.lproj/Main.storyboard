@@ -87,30 +87,30 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZC-Mi-enh" customClass="FloatingActionButtonRotation" customModule="Herby" customModuleProvider="target">
-                                        <rect key="frame" x="149" y="8" width="44" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="icons8-handwritten-ocr-30"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrL-nG-neN" customClass="FloatingActionButtonRotation" customModule="Herby" customModuleProvider="target">
-                                        <rect key="frame" x="97" y="30" width="44" height="44"/>
+                                        <rect key="frame" x="149" y="18" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="icons8-handwritten-ocr-30"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oca-Ko-knt" customClass="FloatingActionButtonRotation" customModule="Herby" customModuleProvider="target">
-                                        <rect key="frame" x="45" y="72" width="44" height="44"/>
+                                        <rect key="frame" x="41" y="93" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="icons8-handwritten-ocr-30"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsA-ZH-Lgf" customClass="FloatingActionButtonRotation" customModule="Herby" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="128" width="44" height="44"/>
+                                        <rect key="frame" x="19" y="158" width="44" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="icons8-handwritten-ocr-30"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrL-nG-neN" customClass="FloatingActionButtonRotation" customModule="Herby" customModuleProvider="target">
+                                        <rect key="frame" x="88" y="43" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="icons8-handwritten-ocr-30"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="150"/>
+                                        <real key="value" value="180"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -160,6 +160,10 @@
                     <navigationItem key="navigationItem" title="Inventory" id="YJf-St-Hdg"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="button1" destination="YZC-Mi-enh" id="sKM-Oq-Fw8"/>
+                        <outlet property="button2" destination="nrL-nG-neN" id="k7R-nF-tD8"/>
+                        <outlet property="button3" destination="oca-Ko-knt" id="coE-ia-4yE"/>
+                        <outlet property="button4" destination="DsA-ZH-Lgf" id="IE6-mj-GI6"/>
                         <outlet property="inventoryAddButton" destination="2wu-Z1-p8t" id="bse-bM-L3E"/>
                         <outlet property="menuViewFAB" destination="oQQ-97-GXq" id="u93-XJ-Nmr"/>
                         <outlet property="tableView" destination="GZR-zd-mao" id="Xgo-yt-qTQ"/>

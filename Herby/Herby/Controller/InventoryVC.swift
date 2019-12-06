@@ -21,8 +21,14 @@ class InventoryVC : UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var button1: FloatingActionButtonRotation!
+    @IBOutlet weak var button2: FloatingActionButtonRotation!
+    @IBOutlet weak var button3: FloatingActionButtonRotation!
+    @IBOutlet weak var button4: FloatingActionButtonRotation!
+    
     @IBOutlet weak var menuViewFAB: CircleViewForFloatingActionButton!
     @IBOutlet weak var inventoryAddButton: FloatingActionButtonRotation!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -31,11 +37,21 @@ class InventoryVC : UIViewController{
         tableView.delegate = self
         loadData()
         
-        menuViewFAB.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        
+        
+        menuCloseSetupFAB()
         
 //        let apiKey = "b503cdeb7efb4e5aa1b3f8c16a80312e"
 //        let baseURL = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey=\(apiKey)"
 //        urlSession(url: baseURL)
+    }
+    
+    func menuCloseSetupFAB() {
+        menuViewFAB.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        button1.transform = CGAffineTransform(translationX: 0, y: 20)
+        button2.transform = CGAffineTransform(translationX: 5, y: 15)
+        button3.transform = CGAffineTransform(translationX: 15, y: 5)
+        button4.transform = CGAffineTransform(translationX: 20, y: 0)
     }
     
     
@@ -43,13 +59,24 @@ class InventoryVC : UIViewController{
         UIView.animate(withDuration: 0.4) {
             
             if self.menuViewFAB.transform == .identity {
-                //menu open
-                self.menuViewFAB.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                self.menuCloseSetupFAB()
+                
             } else {
-                //menu close
-                self.menuViewFAB.transform = CGAffineTransform(scaleX: 1, y: 1)
+                self.menuViewFAB.transform = .identity
+            
             }
         }
+        
+        UIView.animate(withDuration: 1.0, delay: 0.3, usingSpringWithDamping: 0.2, initialSpringVelocity: 3, options: [], animations: {
+            if self.menuViewFAB.transform == .identity {
+                self.button1.transform = .identity
+                self.button2.transform = .identity
+                self.button3.transform = .identity
+                self.button4.transform = .identity
+            }
+        })
+        
+        
         
         
         
