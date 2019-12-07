@@ -18,6 +18,7 @@
 		2937DA41234D3BCF00B95535 /* HerbyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2937DA40234D3BCF00B95535 /* HerbyUITests.swift */; };
 		293F4A62234FB26800ADB105 /* FloatingActionButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293F4A61234FB26800ADB105 /* FloatingActionButtonExtension.swift */; };
 		293F4A65234FC74900ADB105 /* InventoryListModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 293F4A63234FC74900ADB105 /* InventoryListModel.xcdatamodeld */; };
+		29A40E4E239BC295008C8591 /* FloatingActionMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A40E4D239BC295008C8591 /* FloatingActionMenuButton.swift */; };
 		29E02DBB234E0520002A8821 /* InventoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E02DBA234E0520002A8821 /* InventoryVC.swift */; };
 		29E02DBD234E076B002A8821 /* ShoppingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E02DBC234E076B002A8821 /* ShoppingListVC.swift */; };
 		29E02DBF234E0900002A8821 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E02DBE234E0900002A8821 /* AccountVC.swift */; };
@@ -62,6 +63,7 @@
 		2937DA42234D3BCF00B95535 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		293F4A61234FB26800ADB105 /* FloatingActionButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButtonExtension.swift; sourceTree = "<group>"; };
 		293F4A64234FC74900ADB105 /* InventoryListModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InventoryListModel.xcdatamodel; sourceTree = "<group>"; };
+		29A40E4D239BC295008C8591 /* FloatingActionMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionMenuButton.swift; sourceTree = "<group>"; };
 		29E02DBA234E0520002A8821 /* InventoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryVC.swift; sourceTree = "<group>"; };
 		29E02DBC234E076B002A8821 /* ShoppingListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListVC.swift; sourceTree = "<group>"; };
 		29E02DBE234E0900002A8821 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				2937DA29234D3BCF00B95535 /* LaunchScreen.storyboard */,
 				2937DA24234D3BCE00B95535 /* Main.storyboard */,
 				58C093062369397A009159B1 /* FloatingActionButtonRotation.swift */,
+				29A40E4D239BC295008C8591 /* FloatingActionMenuButton.swift */,
 				58C093082369CBB7009159B1 /* CircleViewForFloatingActionButton.swift */,
 			);
 			path = View;
@@ -486,6 +489,7 @@
 				293F4A62234FB26800ADB105 /* FloatingActionButtonExtension.swift in Sources */,
 				2937DA1F234D3BCE00B95535 /* AppDelegate.swift in Sources */,
 				2937DA21234D3BCE00B95535 /* SceneDelegate.swift in Sources */,
+				29A40E4E239BC295008C8591 /* FloatingActionMenuButton.swift in Sources */,
 				29E02DBB234E0520002A8821 /* InventoryVC.swift in Sources */,
 				29E02DBF234E0900002A8821 /* AccountVC.swift in Sources */,
 			);

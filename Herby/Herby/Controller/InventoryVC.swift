@@ -21,13 +21,15 @@ class InventoryVC : UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var button1: FloatingActionButtonRotation!
-    @IBOutlet weak var button2: FloatingActionButtonRotation!
-    @IBOutlet weak var button3: FloatingActionButtonRotation!
-    @IBOutlet weak var button4: FloatingActionButtonRotation!
     
-    @IBOutlet weak var menuViewFAB: CircleViewForFloatingActionButton!
-    @IBOutlet weak var inventoryAddButton: FloatingActionButtonRotation!
+    @IBOutlet weak var menuUIViewFAB: CircleViewForFloatingActionButton!
+    @IBOutlet weak var floatingActionButton: FloatingActionButtonRotation!
+    @IBOutlet weak var addTextFAMB: FloatingActionButtonRotation!
+    @IBOutlet weak var objectReconFAMB: FloatingActionButtonRotation!
+    @IBOutlet weak var textReconFAMB: FloatingActionButtonRotation!
+    @IBOutlet weak var barCodeReconFAMB: FloatingActionButtonRotation!
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,32 +49,32 @@ class InventoryVC : UIViewController{
     }
     
     func menuCloseSetupFAB() {
-        menuViewFAB.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        button1.transform = CGAffineTransform(translationX: 0, y: 20)
-        button2.transform = CGAffineTransform(translationX: 5, y: 15)
-        button3.transform = CGAffineTransform(translationX: 15, y: 5)
-        button4.transform = CGAffineTransform(translationX: 20, y: 0)
+        menuUIViewFAB.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        addTextFAMB.transform = CGAffineTransform(translationX: 0, y: 20)
+        objectReconFAMB.transform = CGAffineTransform(translationX: 5, y: 15)
+        textReconFAMB.transform = CGAffineTransform(translationX: 15, y: 5)
+        barCodeReconFAMB.transform = CGAffineTransform(translationX: 20, y: 0)
     }
     
     
-    @IBAction func inventoryAddButtonAction(_ sender: Any) {
-        UIView.animate(withDuration: 0.4) {
+    @IBAction func floatingActionButtonIBAction(_ sender: Any) {
+        UIView.animate(withDuration: 0.3) {
             
-            if self.menuViewFAB.transform == .identity {
+            if self.menuUIViewFAB.transform == .identity {
                 self.menuCloseSetupFAB()
                 
             } else {
-                self.menuViewFAB.transform = .identity
+                self.menuUIViewFAB.transform = .identity
             
             }
         }
         
-        UIView.animate(withDuration: 1.0, delay: 0.3, usingSpringWithDamping: 0.2, initialSpringVelocity: 3, options: [], animations: {
-            if self.menuViewFAB.transform == .identity {
-                self.button1.transform = .identity
-                self.button2.transform = .identity
-                self.button3.transform = .identity
-                self.button4.transform = .identity
+        UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 0.15, initialSpringVelocity: 3, options: [], animations: {
+            if self.menuUIViewFAB.transform == .identity {
+                self.addTextFAMB.transform = .identity
+                self.objectReconFAMB.transform = .identity
+                self.textReconFAMB.transform = .identity
+                self.barCodeReconFAMB.transform = .identity
             }
         })
         
