@@ -90,6 +90,9 @@
                                         <rect key="frame" x="149" y="18" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="icons8-text-width-30-2"/>
+                                        <connections>
+                                            <action selector="addingTextToList:" destination="pZ7-iy-sL5" eventType="touchUpInside" id="owQ-pI-8Ch"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrL-nG-neN" customClass="FloatingActionMenuButton" customModule="Herby" customModuleProvider="target">
                                         <rect key="frame" x="88" y="43" width="44" height="44"/>
