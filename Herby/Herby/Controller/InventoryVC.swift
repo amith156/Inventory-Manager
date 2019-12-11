@@ -89,7 +89,6 @@ class InventoryVC : UIViewController{
                 self.inventoryArrayList.append(newItem)
                 self.saveData()
             }
-
         }
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
 
@@ -145,13 +144,13 @@ extension InventoryVC : UITableViewDataSource {
 
         // action one
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            print("Edit tapped")
+            self.editTextInventoryArrayList(text: (self.inventoryArrayList[indexPath.row].name)!,  indexPath: indexPath)
+            
         })
         editAction.backgroundColor = UIColor.blue
         
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             self.deletingItems(indexPath: indexPath)
-            print("Delete tapped")
         })
         deleteAction.backgroundColor = UIColor.red
         return [editAction, deleteAction]
@@ -171,9 +170,47 @@ extension InventoryVC : UITableViewDelegate {
     }
     
 }
+
 //MARK:- Custom Methods
 extension InventoryVC {
     
+    @objc func dismissAlertController(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func editTextInventoryArrayList(text : String = "", indexPath : IndexPath) {
+        var textField = UITextField()
+
+        let alert =  UIAlertController(title: "Edit item", message: "Please edit your inventory item.", preferredStyle: .alert)
+
+        let action = UIAlertAction(title: "ok", style: .default) {
+            (act) in
+
+            //this is NSManger obj for every new item
+//            let newItem = InventoryListEntity(context: self.context)
+
+            if textField.text!.isEmpty != true {
+//                newItem.name = textField.text!
+                self.inventoryArrayList[indexPath.row].name = textField.text!
+                self.saveData()
+            }
+        }
+
+        alert.addTextField { (alertText) in
+            alertText.placeholder = "Please enter your item to edit!"
+            alertText.text = text
+            textField = alertText
+            textField.text = alertText.text!
+        }
+
+        alert.addAction(action)
+        alert.preferredAction = action
+
+        self.present(alert, animated: true) {
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissAlertController))
+                alert.view.superview?.subviews[0].addGestureRecognizer(tapGesture)
+        }
+    }
     
     func menuCloseSetupFAB() {
         menuUIViewFAB.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
