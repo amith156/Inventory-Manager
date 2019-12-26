@@ -5,6 +5,8 @@ target 'Herby' do
   use_frameworks!
     pod 'Alamofire'
     pod 'SwiftyJSON'
+    pod 'RxSwift', '~> 5'
+    pod 'RxCocoa', '~> 5'
 
   # Pods for Herby
 
