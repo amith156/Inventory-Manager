@@ -55,7 +55,7 @@ class InventoryVC : UIViewController{
                 
             } else {
                 self.menuUIViewFAB.transform = .identity
-            
+//                self.floatingActionButton.transform = .identity
             }
         }
         
@@ -94,6 +94,8 @@ class InventoryVC : UIViewController{
 
         alert.addTextField { (alertText) in
             alertText.placeholder = "Please type your item!"
+            alertText.autocapitalizationType = .words
+            alertText.autocorrectionType = .yes
             textField = alertText
         }
 
@@ -174,7 +176,7 @@ extension InventoryVC : UITableViewDelegate {
 //MARK:- Custom Methods
 extension InventoryVC {
     
-    @objc func dismissAlertController(){
+    @objc func dismissAlertController() {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -218,6 +220,7 @@ extension InventoryVC {
         objectReconFAMB.transform = CGAffineTransform(translationX: 5, y: 15)
         textReconFAMB.transform = CGAffineTransform(translationX: 15, y: 5)
         barCodeReconFAMB.transform = CGAffineTransform(translationX: 20, y: 0)
+        floatingActionButton.transform = .identity
     }
     
     func deletingItems(indexPath: IndexPath) {
@@ -263,5 +266,4 @@ extension InventoryVC {
             }
         }
     }
-    
 }
