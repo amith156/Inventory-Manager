@@ -14,8 +14,8 @@ import SwiftyJSON
 
 class InventoryVC : UIViewController{
     
-    var inventoryArrayList = [InventoryListEntity]()
-    
+//    var inventoryArrayList = [InventoryListEntity]()
+    var inventoryViewModel : InventoryViewModel = InventoryViewModel(inventoryList: [InventoryListEntity]())
     //This is for the Core Data Context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -35,8 +35,8 @@ class InventoryVC : UIViewController{
         
         tableView.dataSource = self
         tableView.delegate = self
-        loadData()
-    
+        inventoryViewModel.loadData()
+        
         menuCloseSetupFAB()
         
 //        let apiKey = "b503cdeb7efb4e5aa1b3f8c16a80312e"
@@ -86,8 +86,8 @@ class InventoryVC : UIViewController{
 
             if textField.text!.isEmpty != true {
                 newItem.name = textField.text!
-                self.inventoryArrayList.append(newItem)
-                self.saveData()
+                self.inventoryViewModel.inventoryArrayList.append(newItem)
+                self.customSaveDataItem()
             }
         }
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
@@ -113,23 +113,23 @@ class InventoryVC : UIViewController{
         }
         print("+++> \(alert.view.subviews.count)")
 
-        saveData()
+        customSaveDataItem()
     }
 }
 
 //MARK:- Data Source
 extension InventoryVC : UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        inventoryArrayList.count
+        inventoryViewModel.inventoryArrayList.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TablViewCellID", for: indexPath)
-        cell.textLabel?.text = inventoryArrayList[indexPath.row].name
+        cell.textLabel?.text = inventoryViewModel.inventoryArrayList[indexPath.row].name
         return cell
     }
-    
+
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView,
                     leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
@@ -141,18 +141,18 @@ extension InventoryVC : UITableViewDataSource {
 
              return UISwipeActionsConfiguration(actions: [editAction])
      }
-    
+
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 
         // action one
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            self.editTextInventoryArrayList(text: (self.inventoryArrayList[indexPath.row].name)!,  indexPath: indexPath)
-            
+            self.editTextInventoryArrayList(text: (self.inventoryViewModel.inventoryArrayList[indexPath.row].name)!,  indexPath: indexPath)
+
         })
         editAction.backgroundColor = UIColor.blue
-        
+
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
-            self.deletingItems(indexPath: indexPath)
+            self.customDeleteItem(indexPath: indexPath)
         })
         deleteAction.backgroundColor = UIColor.red
         return [editAction, deleteAction]
@@ -161,16 +161,16 @@ extension InventoryVC : UITableViewDataSource {
 
 //MARK:- Delegate
 extension InventoryVC : UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
 //        context.delete(inventoryArrayList[indexPath.row])
 //        inventoryArrayList.remove(at: indexPath.row)
-        
-        self.saveData()
+
+        customSaveDataItem()
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
 }
 
 //MARK:- Custom Methods
@@ -193,8 +193,8 @@ extension InventoryVC {
 
             if textField.text!.isEmpty != true {
 //                newItem.name = textField.text!
-                self.inventoryArrayList[indexPath.row].name = textField.text!
-                self.saveData()
+                self.inventoryViewModel.inventoryArrayList[indexPath.row].name = textField.text!
+                self.customSaveDataItem()
             }
         }
 
@@ -223,47 +223,15 @@ extension InventoryVC {
         floatingActionButton.transform = .identity
     }
     
-    func deletingItems(indexPath: IndexPath) {
-        context.delete(inventoryArrayList[indexPath.row])
-        inventoryArrayList.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        
-        //saving the context without reloading tableview
-        do {
-          try context.save()
-        } catch {
-            print("-----> error on saving data, \(error)")
-        }
-    }
-    
-    func saveData() {
-        do {
-          try context.save()
-        } catch {
-            print("-----> error on saving data, \(error)")
-        }
+    func customSaveDataItem() {
+        inventoryViewModel.saveData()
         tableView.reloadData()
-        print("-----> \(inventoryArrayList.count)")
+    }
+
+    func customDeleteItem(indexPath: IndexPath) {
+        self.inventoryViewModel.deletingItems(indexPath: indexPath)
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        self.inventoryViewModel.saveData()
     }
     
-    func loadData() {
-        let request : NSFetchRequest<InventoryListEntity> = InventoryListEntity.fetchRequest()
-        do {
-            inventoryArrayList = try context.fetch(request)
-        } catch {
-            print("-----> error in loading or fetching DB, \(error)")
-        }
-    }
-    
-    func urlSession(url : String) {
-        Alamofire.request(url).responseJSON {
-            (response) in
-            if response.result.isSuccess {
-                let json : JSON = JSON(response.result.value!)
-                print("-----> \(json)")
-            } else {
-                
-            }
-        }
-    }
 }
