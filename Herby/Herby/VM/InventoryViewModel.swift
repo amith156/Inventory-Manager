@@ -11,16 +11,41 @@ import UIKit
 import CoreData
 import Alamofire
 import SwiftyJSON
+import RxCocoa
+import RxSwift
+
 
 class InventoryViewModel {
     
     var inventoryArrayList : [InventoryListEntity]
     
+    var text = BehaviorRelay<String>(value: "")
+    
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    
+    //binding views init
+    func bindingViewProperties() {
+        text.map { (text) -> Void in
+            let newItem = InventoryListEntity(context: self.context)
+            newItem.name = text
+            self.inventoryArrayList.append(newItem)
+            self.saveData()
+        }
+    }
+    
+    
     init(inventoryList : [InventoryListEntity]) {
         self.inventoryArrayList = inventoryList
+        bindingViewProperties()
     }
 
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    func x() {
+        print("-----> text \(text.value)")
+    }
+    
+
     
     func loadData() {
         let request : NSFetchRequest<InventoryListEntity> = InventoryListEntity.fetchRequest()

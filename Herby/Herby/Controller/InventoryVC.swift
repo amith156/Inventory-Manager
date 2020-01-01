@@ -11,6 +11,8 @@ import UIKit
 import CoreData
 import Alamofire
 import SwiftyJSON
+import RxSwift
+import RxCocoa
 
 class InventoryVC : UIViewController{
     
@@ -18,6 +20,8 @@ class InventoryVC : UIViewController{
     var inventoryViewModel : InventoryViewModel = InventoryViewModel(inventoryList: [InventoryListEntity]())
     //This is for the Core Data Context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    let disposeBag = DisposeBag()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -82,13 +86,17 @@ class InventoryVC : UIViewController{
             (act) in
 
             //this is NSManger obj for every new item
-            let newItem = InventoryListEntity(context: self.context)
+//            let newItem = InventoryListEntity(context: self.context)
 
-            if textField.text!.isEmpty != true {
-                newItem.name = textField.text!
-                self.inventoryViewModel.inventoryArrayList.append(newItem)
-                self.customSaveDataItem()
-            }
+            textField.rx.text.orEmpty.bind(to: self.inventoryViewModel.text).disposed(by: self.disposeBag)
+            self.tableView.reloadData()
+            self.inventoryViewModel.x()
+//
+//            if textField.text!.isEmpty != true {
+//                newItem.name = textField.text!
+//                self.inventoryViewModel.inventoryArrayList.append(newItem)
+//                self.customSaveDataItem()
+//            }
         }
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
 
