@@ -19,33 +19,36 @@ class InventoryViewModel {
     
     var inventoryArrayList : [InventoryListEntity]
     
-    var text = BehaviorRelay<String>(value: "")
     
+    var inventoryBehaviorlist = BehaviorRelay<[InventoryListEntity]>(value: [])
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    
-    //binding views init
-    func bindingViewProperties() {
-        text.map { (text) -> Void in
-            let newItem = InventoryListEntity(context: self.context)
-            newItem.name = text
-            self.inventoryArrayList.append(newItem)
-            self.saveData()
-        }
-    }
-    
+
     
     init(inventoryList : [InventoryListEntity]) {
         self.inventoryArrayList = inventoryList
-        bindingViewProperties()
-    }
-
-    func x() {
-        print("-----> text \(text.value)")
+        self.inventoryBehaviorlist.accept(inventoryList)
+        
     }
     
 
+    func inventoryBehaviourListToObservable() -> Observable<[InventoryListEntity]>{
+        return inventoryBehaviorlist.asObservable()
+    }
+    
+    func AddInventoryListToInventoryBehaviorList() {
+        inventoryBehaviorlist.accept(inventoryArrayList)
+        loadData()
+        print("bh value----> \(inventoryBehaviorlist.value.count)")
+    }
+    
+    func addItemsToList(text : String) {
+        let newItem = InventoryListEntity(context: self.context)
+        newItem.name = text
+        inventoryArrayList.append(newItem)
+        AddInventoryListToInventoryBehaviorList()
+        saveData()
+    }
     
     func loadData() {
         let request : NSFetchRequest<InventoryListEntity> = InventoryListEntity.fetchRequest()

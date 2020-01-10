@@ -37,11 +37,15 @@ class InventoryVC : UIViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        tableView.dataSource = self
-        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.delegate = self
         inventoryViewModel.loadData()
         
         menuCloseSetupFAB()
+        
+        
+        setUpAddToList()
+        populateTodoList()
         
 //        let apiKey = "b503cdeb7efb4e5aa1b3f8c16a80312e"
 //        let baseURL = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey=\(apiKey)"
@@ -74,55 +78,63 @@ class InventoryVC : UIViewController{
         
     }
     
-    //MARK:- adding text to the list
-    @IBAction func addingTextToList(_ sender: FloatingActionButtonRotation) {
-        
-        self.floatingActionButtonIBAction(FloatingActionButtonRotation.self)
-        var textField = UITextField()
+    func setUpAddToList() {
+        addTextFAMB.rx.tap.subscribe(onNext : {
+            print("xxxxx")
+            self.floatingActionButtonIBAction(FloatingActionButtonRotation.self)
+            var textField = UITextField()
 
-        let alert =  UIAlertController(title: "Add item", message: "Please insert your inventory item.", preferredStyle: .alert)
+            let alert =  UIAlertController(title: "Add item", message: "Please insert your inventory item.", preferredStyle: .alert)
 
-        let action = UIAlertAction(title: "Add", style: .default) {
-            (act) in
+            let action = UIAlertAction(title: "Add", style: .default) {
+                (act) in
 
-            //this is NSManger obj for every new item
-//            let newItem = InventoryListEntity(context: self.context)
+                //this is NSManger obj for every new item
+                let newItem = InventoryListEntity(context: self.context)
+//                textField.rx.text.orEmpty.bind(to: self.inventoryViewModel.text).disposed(by: self.disposeBag)
+                
+                if textField.text!.isEmpty != true {
+                    self.inventoryViewModel.addItemsToList(text: textField.text!)
+                }
+                
+//                self.tableView.reloadData()
+//                self.inventoryViewModel.x()
+    //
+    //            if textField.text!.isEmpty != true {
+    //                newItem.name = textField.text!
+    //                self.inventoryViewModel.inventoryArrayList.append(newItem)
+    //                self.customSaveDataItem()
+    //            }
+            }
+            let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
 
-            textField.rx.text.orEmpty.bind(to: self.inventoryViewModel.text).disposed(by: self.disposeBag)
-            self.tableView.reloadData()
-            self.inventoryViewModel.x()
-//
-//            if textField.text!.isEmpty != true {
-//                newItem.name = textField.text!
-//                self.inventoryViewModel.inventoryArrayList.append(newItem)
-//                self.customSaveDataItem()
-//            }
-        }
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addTextField { (alertText) in
+                alertText.placeholder = "Please type your item!"
+                alertText.autocapitalizationType = .words
+                alertText.autocorrectionType = .yes
+                textField = alertText
+            }
 
-        alert.addTextField { (alertText) in
-            alertText.placeholder = "Please type your item!"
-            alertText.autocapitalizationType = .words
-            alertText.autocorrectionType = .yes
-            textField = alertText
-        }
+            alert.addAction(cancelButton)
+            alert.addAction(action)
+            alert.preferredAction = action
 
-        alert.addAction(cancelButton)
-        alert.addAction(action)
-        alert.preferredAction = action
+            self.present(alert, animated: true, completion: .none)
 
-        present(alert, animated: true, completion: .none)
+            if #available(iOS 13.0, *) {
+                alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = .secondarySystemBackground
 
-        if #available(iOS 13.0, *) {
-            alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = .secondarySystemBackground
+            } else {
+                // Fallback on earlier versions
+            }
+            print("+++> \(alert.view.subviews.count)")
 
-        } else {
-            // Fallback on earlier versions
-        }
-        print("+++> \(alert.view.subviews.count)")
-
-        customSaveDataItem()
+            self.customSaveDataItem()
+    
+            
+            }).disposed(by: disposeBag)
     }
+
 }
 
 //MARK:- Data Source
@@ -137,18 +149,6 @@ extension InventoryVC : UITableViewDataSource {
         cell.textLabel?.text = inventoryViewModel.inventoryArrayList[indexPath.row].name
         return cell
     }
-
-    @available(iOS 11.0, *)
-    func tableView(_ tableView: UITableView,
-                    leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-     {
-         let editAction = UIContextualAction(style: .normal, title:  "Edit", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-                 success(true)
-             })
-    editAction.backgroundColor = .blue
-
-             return UISwipeActionsConfiguration(actions: [editAction])
-     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 
@@ -240,6 +240,22 @@ extension InventoryVC {
         self.inventoryViewModel.deletingItems(indexPath: indexPath)
         self.tableView.deleteRows(at: [indexPath], with: .automatic)
         self.inventoryViewModel.saveData()
+    }
+    
+}
+
+extension InventoryVC {
+    
+    func populateTodoList() {
+        //fetchObservableData returns the type of
+        inventoryViewModel.inventoryBehaviourListToObservable().bind(to: tableView.rx.items(cellIdentifier: "TablViewCellID", cellType: UITableViewCell.self)) {
+            (row, element, cell) in
+            
+            cell.textLabel?.text = element.name
+        }.disposed(by: disposeBag)
+    
+//        tableView.rx.setDelegate(self)
+    
     }
     
 }
