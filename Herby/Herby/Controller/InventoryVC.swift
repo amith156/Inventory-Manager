@@ -19,7 +19,7 @@ class InventoryVC : UIViewController{
 //    var inventoryArrayList = [InventoryListEntity]()
     var inventoryViewModel : InventoryViewModel = InventoryViewModel(inventoryList: [InventoryListEntity]())
     //This is for the Core Data Context
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let disposeBag = DisposeBag()
     
@@ -90,7 +90,7 @@ class InventoryVC : UIViewController{
                 (act) in
 
                 //this is NSManger obj for every new item
-                let newItem = InventoryListEntity(context: self.context)
+//                let newItem = InventoryListEntity(context: self.context)
 //                textField.rx.text.orEmpty.bind(to: self.inventoryViewModel.text).disposed(by: self.disposeBag)
                 
                 if textField.text!.isEmpty != true {
@@ -127,7 +127,6 @@ class InventoryVC : UIViewController{
             } else {
                 // Fallback on earlier versions
             }
-            print("+++> \(alert.view.subviews.count)")
 
             self.customSaveDataItem()
     
@@ -248,10 +247,10 @@ extension InventoryVC {
     
     func populateTodoList() {
         //fetchObservableData returns the type of
+        self.inventoryViewModel.updateInventoryBehaviourList()
         inventoryViewModel.inventoryBehaviourListToObservable().bind(to: tableView.rx.items(cellIdentifier: "TablViewCellID", cellType: UITableViewCell.self)) {
             (row, element, cell) in
-            
-            cell.textLabel?.text = element.name
+            cell.textLabel?.text = element.name!
         }.disposed(by: disposeBag)
     
 //        tableView.rx.setDelegate(self)

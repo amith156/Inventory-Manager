@@ -36,18 +36,20 @@ class InventoryViewModel {
         return inventoryBehaviorlist.asObservable()
     }
     
-    func AddInventoryListToInventoryBehaviorList() {
+    func updateInventoryBehaviourList() {
         inventoryBehaviorlist.accept(inventoryArrayList)
-        loadData()
-        print("bh value----> \(inventoryBehaviorlist.value.count)")
+//        loadData()
+        print("in value count----> \(inventoryArrayList.count)")
+        print("in value ----> \(inventoryArrayList)")
+        print("bh value count----> \(inventoryBehaviorlist.value.count)")
     }
     
     func addItemsToList(text : String) {
         let newItem = InventoryListEntity(context: self.context)
         newItem.name = text
         inventoryArrayList.append(newItem)
-        AddInventoryListToInventoryBehaviorList()
         saveData()
+        updateInventoryBehaviourList()
     }
     
     func loadData() {
@@ -61,12 +63,15 @@ class InventoryViewModel {
     
     func saveData() {
         do {
+            inventoryArrayList.forEach { (item) in
+                print("====> \(item.name!)")
+            }
           try context.save()
         } catch {
             print("-----> error on saving data, \(error)")
         }
 //        reloadData()
-        print("-----> \(inventoryArrayList.count)")
+        print("-----> \(inventoryArrayList.count) \(inventoryArrayList)")
     }
     
     
