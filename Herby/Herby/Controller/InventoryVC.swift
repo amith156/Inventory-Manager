@@ -254,7 +254,14 @@ extension InventoryVC {
         }.disposed(by: disposeBag)
     
 //        tableView.rx.setDelegate(self)
-    
+        
+        tableView.rx.itemDeleted.subscribe {
+            (indexpath) in
+            print(indexpath)
+//            IndexPath(row: indexpath.element, section: 0)
+            self.inventoryViewModel.deletingItems(indexPath: indexpath.element!)
+        }.disposed(by: disposeBag)
+        
     }
     
 }

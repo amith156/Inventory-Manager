@@ -78,6 +78,7 @@ class InventoryViewModel {
     func deletingItems(indexPath: IndexPath) {
         context.delete(inventoryArrayList[indexPath.row])
         inventoryArrayList.remove(at: indexPath.row)
+        updateInventoryBehaviourList()
 //        inventoryVC.tableView.deleteRows(at: [indexPath], with: .automatic)
         
         //saving the context without reloading tableview
