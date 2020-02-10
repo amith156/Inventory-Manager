@@ -44,8 +44,8 @@ class InventoryVC : UIViewController{
         menuCloseSetupFAB()
         
         
-        setUpAddToList()
-        populateTodoList()
+//        setUpAddToList()
+//        populateTodoList()
         
 //        let apiKey = "b503cdeb7efb4e5aa1b3f8c16a80312e"
 //        let baseURL = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey=\(apiKey)"
@@ -134,6 +134,51 @@ class InventoryVC : UIViewController{
             }).disposed(by: disposeBag)
     }
 
+    //MARK:- adding text to the list
+    @IBAction func addItemTextToList(_ sender: FloatingActionButtonRotation) {
+         self.floatingActionButtonIBAction(FloatingActionButtonRotation.self)
+         var textField = UITextField()
+
+         let alert =  UIAlertController(title: "Add item", message: "Please insert your inventory item.", preferredStyle: .alert)
+
+         let action = UIAlertAction(title: "Add", style: .default) {
+            (act) in
+
+             //this is NSManger obj for every new item
+             let newItem = InventoryListEntity(context: self.inventoryViewModel.context)
+
+             if textField.text!.isEmpty != true {
+                 newItem.name = textField.text!
+                 self.inventoryViewModel.inventoryArrayList.append(newItem)
+                 self.customSaveDataItem()
+             }
+         }
+         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+
+         alert.addTextField { (alertText) in
+             alertText.placeholder = "Please type your item!"
+             alertText.autocapitalizationType = .words
+             alertText.autocorrectionType = .yes
+             textField = alertText
+         }
+
+         alert.addAction(cancelButton)
+         alert.addAction(action)
+         alert.preferredAction = action
+
+         present(alert, animated: true, completion: .none)
+
+         if #available(iOS 13.0, *) {
+             alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = .secondarySystemBackground
+
+         } else {
+             // Fallback on earlier versions
+         }
+         print("+++> \(alert.view.subviews.count)")
+
+         customSaveDataItem()
+    }
+    
 }
 
 //MARK:- Data Source
@@ -149,21 +194,7 @@ extension InventoryVC : UITableViewDataSource {
         return cell
     }
 
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-
-        // action one
-        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            self.editTextInventoryArrayList(text: (self.inventoryViewModel.inventoryArrayList[indexPath.row].name)!,  indexPath: indexPath)
-
-        })
-        editAction.backgroundColor = UIColor.blue
-
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
-            self.customDeleteItem(indexPath: indexPath)
-        })
-        deleteAction.backgroundColor = UIColor.red
-        return [editAction, deleteAction]
-    }
+    
 }
 
 //MARK:- Delegate
@@ -179,6 +210,77 @@ extension InventoryVC : UITableViewDelegate {
     }
 
 }
+//MARK:- Methods for Swype Action for tableView
+extension InventoryVC {
+    
+    @available(iOS 11.0, *)
+     func tableView(_ tableView: UITableView,
+                     leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+      {
+          let editAction = UIContextualAction(style: .normal, title:  "Edit", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                  success(true)
+              })
+     editAction.backgroundColor = .blue
+
+              return UISwipeActionsConfiguration(actions: [editAction])
+      }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        // action one
+        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
+            self.editTextInventoryArrayList(text: (self.inventoryViewModel.inventoryArrayList[indexPath.row].name)!,  indexPath: indexPath)
+        })
+        editAction.backgroundColor = UIColor.blue
+
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+            self.customDeleteItem(indexPath: indexPath)
+        })
+        deleteAction.backgroundColor = UIColor.red
+        return [editAction, deleteAction]
+        
+    }
+
+     
+     @available(iOS 11.0, *)
+     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+         return UISwipeActionsConfiguration(actions: [editIconeAction(at: indexPath), deleteIconeAction(at: indexPath)])
+     }
+
+     @available(iOS 11.0, *)
+     func editIconeAction(at indexPath : IndexPath) -> UIContextualAction {
+        _ = inventoryViewModel.inventoryArrayList[indexPath.row]
+         let action = UIContextualAction(style: .normal, title: "Edit") {
+            (action, view, completion) in
+            self.editTextInventoryArrayList(text: (self.inventoryViewModel.inventoryArrayList[indexPath.row].name)!,  indexPath: indexPath)
+            
+            
+            completion(true)
+         }
+         action.image = #imageLiteral(resourceName: "icons8-edit-40")
+         action.backgroundColor = self.inventoryViewModel.hexStringToUIColor(hex: "#1201ff")
+         return action
+     }
+     
+     
+     @available(iOS 11.0, *)
+     func deleteIconeAction(at indexPath : IndexPath) -> UIContextualAction {
+        _ = inventoryViewModel.inventoryArrayList[indexPath.row]
+         let action = UIContextualAction(style: .normal, title: "Delete") {
+             (action, view, completion) in
+             
+             self.customDeleteItem(indexPath: indexPath)
+             completion(true)
+         }
+         
+         action.image = #imageLiteral(resourceName: "icons8-delete-bin-40")
+         action.backgroundColor = self.inventoryViewModel.hexStringToUIColor(hex: "#ff0200")
+         return action
+     }
+    
+}
+
+
 
 //MARK:- Custom Methods
 extension InventoryVC {
@@ -237,31 +339,34 @@ extension InventoryVC {
 
     func customDeleteItem(indexPath: IndexPath) {
         self.inventoryViewModel.deletingItems(indexPath: indexPath)
-        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        self.tableView.deleteRows(at: [indexPath], with: .left)
         self.inventoryViewModel.saveData()
     }
     
 }
 
-extension InventoryVC {
-    
-    func populateTodoList() {
-        //fetchObservableData returns the type of
-        self.inventoryViewModel.updateInventoryBehaviourList()
-        inventoryViewModel.inventoryBehaviourListToObservable().bind(to: tableView.rx.items(cellIdentifier: "TablViewCellID", cellType: UITableViewCell.self)) {
-            (row, element, cell) in
-            cell.textLabel?.text = element.name!
-        }.disposed(by: disposeBag)
-    
-//        tableView.rx.setDelegate(self)
-        
-        tableView.rx.itemDeleted.subscribe {
-            (indexpath) in
-            print(indexpath)
-//            IndexPath(row: indexpath.element, section: 0)
-            self.inventoryViewModel.deletingItems(indexPath: indexpath.element!)
-        }.disposed(by: disposeBag)
-        
-    }
-    
-}
+
+
+
+//extension InventoryVC {
+//
+//    func populateTodoList() {
+//        //fetchObservableData returns the type of
+//        self.inventoryViewModel.updateInventoryBehaviourList()
+//        inventoryViewModel.inventoryBehaviourListToObservable().bind(to: tableView.rx.items(cellIdentifier: "TablViewCellID", cellType: UITableViewCell.self)) {
+//            (row, element, cell) in
+//            cell.textLabel?.text = element.name!
+//        }.disposed(by: disposeBag)
+//
+////        tableView.rx.setDelegate(self)
+//
+//        tableView.rx.itemDeleted.subscribe {
+//            (indexpath) in
+//            print(indexpath)
+////            IndexPath(row: indexpath.element, section: 0)
+//            self.inventoryViewModel.deletingItems(indexPath: indexpath.element!)
+//        }.disposed(by: disposeBag)
+//
+//    }
+//
+//}

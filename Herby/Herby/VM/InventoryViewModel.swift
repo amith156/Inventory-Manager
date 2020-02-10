@@ -20,36 +20,36 @@ class InventoryViewModel {
     var inventoryArrayList : [InventoryListEntity]
     
     
-    var inventoryBehaviorlist = BehaviorRelay<[InventoryListEntity]>(value: [])
+//    var inventoryBehaviorlist = BehaviorRelay<[InventoryListEntity]>(value: [])
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     
     init(inventoryList : [InventoryListEntity]) {
         self.inventoryArrayList = inventoryList
-        self.inventoryBehaviorlist.accept(inventoryList)
+//        self.inventoryBehaviorlist.accept(inventoryList)
         
     }
     
 
-    func inventoryBehaviourListToObservable() -> Observable<[InventoryListEntity]>{
-        return inventoryBehaviorlist.asObservable()
-    }
+//    func inventoryBehaviourListToObservable() -> Observable<[InventoryListEntity]>{
+//        return inventoryBehaviorlist.asObservable()
+//    }
     
-    func updateInventoryBehaviourList() {
-        inventoryBehaviorlist.accept(inventoryArrayList)
-//        loadData()
-        print("in value count----> \(inventoryArrayList.count)")
-        print("in value ----> \(inventoryArrayList)")
-        print("bh value count----> \(inventoryBehaviorlist.value.count)")
-    }
+//    func updateInventoryBehaviourList() {
+//        inventoryBehaviorlist.accept(inventoryArrayList)
+////        loadData()
+//        print("in value count----> \(inventoryArrayList.count)")
+//        print("in value ----> \(inventoryArrayList)")
+//        print("bh value count----> \(inventoryBehaviorlist.value.count)")
+//    }
     
     func addItemsToList(text : String) {
         let newItem = InventoryListEntity(context: self.context)
         newItem.name = text
         inventoryArrayList.append(newItem)
         saveData()
-        updateInventoryBehaviourList()
+//        updateInventoryBehaviourList()
     }
     
     func loadData() {
@@ -78,7 +78,7 @@ class InventoryViewModel {
     func deletingItems(indexPath: IndexPath) {
         context.delete(inventoryArrayList[indexPath.row])
         inventoryArrayList.remove(at: indexPath.row)
-        updateInventoryBehaviourList()
+//        updateInventoryBehaviourList()
 //        inventoryVC.tableView.deleteRows(at: [indexPath], with: .automatic)
         
         //saving the context without reloading tableview
@@ -88,6 +88,29 @@ class InventoryViewModel {
             print("-----> error on saving data, \(error)")
         }
     }
+    
+    func hexStringToUIColor (hex:String) -> UIColor {
+        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        
+        if (cString.hasPrefix("#")) {
+            cString.remove(at: cString.startIndex)
+        }
+        
+        if ((cString.count) != 6) {
+            return UIColor.gray
+        }
+        
+        var rgbValue:UInt64 = 0
+        Scanner(string: cString).scanHexInt64(&rgbValue)
+        
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+    
     
     func urlSession(url : String) {
         Alamofire.request(url).responseJSON {
