@@ -343,7 +343,41 @@ extension InventoryVC {
         self.inventoryViewModel.saveData()
     }
     
+//    func customLoadDataItem(request : NSFetchRequest<InventoryListEntity> = nil) {
+//        self.inventoryViewModel.loadData(request: request)
+//        tableView.reloadData()
+//    }
+    
 }
+
+//MARK:- Search Bar
+extension InventoryVC : UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request : NSFetchRequest<InventoryListEntity> = InventoryListEntity.fetchRequest()
+//
+        request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchBar.text!)
+//
+        let sortDiscriptor = NSSortDescriptor(key: "name", ascending: true)
+        request.sortDescriptors = [sortDiscriptor]
+//
+////        self.inventoryViewModel.lodeItems(request: request)
+        self.inventoryViewModel.loadData(request: request)
+        tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchBar.text?.count == 0) {
+            self.inventoryViewModel.loadData()
+            tableView.reloadData()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
+}
+
 
 
 

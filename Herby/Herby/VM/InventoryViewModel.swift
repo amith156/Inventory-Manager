@@ -52,8 +52,7 @@ class InventoryViewModel {
 //        updateInventoryBehaviourList()
     }
     
-    func loadData() {
-        let request : NSFetchRequest<InventoryListEntity> = InventoryListEntity.fetchRequest()
+    func loadData(request : NSFetchRequest<InventoryListEntity> = InventoryListEntity.fetchRequest()) {
         do {
             inventoryArrayList = try context.fetch(request)
         } catch {
