@@ -17,19 +17,20 @@ import RxSwift
 
 class InventoryViewModel {
     
-    var inventoryArrayList : [InventoryListEntity]
-    
+    var inventoryArrayList : [InventoryListEntity] = [InventoryListEntity]()
+//    var inventoryArrayList : [NSManagedObject] = []
     
 //    var inventoryBehaviorlist = BehaviorRelay<[InventoryListEntity]>(value: [])
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
+    let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
-    init(inventoryList : [InventoryListEntity]) {
-        self.inventoryArrayList = inventoryList
-//        self.inventoryBehaviorlist.accept(inventoryList)
-        
-    }
+//    init(inventoryList : [InventoryListEntity]) {
+//        self.inventoryArrayList = inventoryList
+////        self.inventoryBehaviorlist.accept(inventoryList)
+//
+//    }
     
 
 //    func inventoryBehaviourListToObservable() -> Observable<[InventoryListEntity]>{
@@ -73,6 +74,12 @@ class InventoryViewModel {
         print("-----> \(inventoryArrayList.count) \(inventoryArrayList)")
     }
     
+//    func insertData(itemName : String) {
+//        let item = CoreDataManager.sharedManager.insert(name: itemName)
+//        if item != nil {
+//            inventoryArrayList.append(item!)
+//        }
+//    }
     
     func deletingItems(indexPath: IndexPath) {
         context.delete(inventoryArrayList[indexPath.row])

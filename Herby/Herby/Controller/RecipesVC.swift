@@ -7,14 +7,21 @@
 //
 
 import UIKit
-
+import CoreData
 class RecipesVC: UIViewController {
 
+    var inventoryArrayList : [InventoryListEntity] = [InventoryListEntity]()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        fetchData()
+        print(inventoryArrayList.count)
     }
-
+    
+    func fetchData() {
+        
+    }
 
 }
 

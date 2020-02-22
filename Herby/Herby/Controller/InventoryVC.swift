@@ -17,7 +17,7 @@ import RxCocoa
 class InventoryVC : UIViewController{
     
 //    var inventoryArrayList = [InventoryListEntity]()
-    var inventoryViewModel : InventoryViewModel = InventoryViewModel(inventoryList: [InventoryListEntity]())
+    var inventoryViewModel : InventoryViewModel = InventoryViewModel()
     //This is for the Core Data Context
 //    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -212,18 +212,6 @@ extension InventoryVC : UITableViewDelegate {
 }
 //MARK:- Methods for Swype Action for tableView
 extension InventoryVC {
-    
-    @available(iOS 11.0, *)
-     func tableView(_ tableView: UITableView,
-                     leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-      {
-          let editAction = UIContextualAction(style: .normal, title:  "Edit", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-                  success(true)
-              })
-     editAction.backgroundColor = .blue
-
-              return UISwipeActionsConfiguration(actions: [editAction])
-      }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         

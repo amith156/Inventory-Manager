@@ -25,6 +25,7 @@
 		445BC83AADFB5DB82BA84997 /* Pods_HerbyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E8143B7DDF2EB9FBC22D7F /* Pods_HerbyTests.framework */; };
 		58C093072369397A009159B1 /* FloatingActionButtonRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C093062369397A009159B1 /* FloatingActionButtonRotation.swift */; };
 		58C093092369CBB7009159B1 /* CircleViewForFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C093082369CBB7009159B1 /* CircleViewForFloatingActionButton.swift */; };
+		58CB5BE423FB31F00057F878 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CB5BE323FB31F00057F878 /* CoreDataManager.swift */; };
 		58FDE46923B4679B001D365B /* InventoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FDE46823B4679B001D365B /* InventoryViewModel.swift */; };
 		7977ED47F6077E2FDE6C79D0 /* Pods_Herby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6959F0BF5B33FE4E7618EA05 /* Pods_Herby.framework */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,7 @@
 		46E8143B7DDF2EB9FBC22D7F /* Pods_HerbyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HerbyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C093062369397A009159B1 /* FloatingActionButtonRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButtonRotation.swift; sourceTree = "<group>"; };
 		58C093082369CBB7009159B1 /* CircleViewForFloatingActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewForFloatingActionButton.swift; sourceTree = "<group>"; };
+		58CB5BE323FB31F00057F878 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		58FDE46823B4679B001D365B /* InventoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewModel.swift; sourceTree = "<group>"; };
 		614DCE5142B2BC9478593D51 /* Pods_Herby_HerbyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Herby_HerbyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6959F0BF5B33FE4E7618EA05 /* Pods_Herby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Herby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,9 +136,9 @@
 		2937DA1D234D3BCE00B95535 /* Herby */ = {
 			isa = PBXGroup;
 			children = (
-				293F4A60234FB1B500ADB105 /* Extensions */,
 				2937DA1E234D3BCE00B95535 /* AppDelegate.swift */,
 				2937DA20234D3BCE00B95535 /* SceneDelegate.swift */,
+				293F4A60234FB1B500ADB105 /* Extensions */,
 				58FDE46723B466BE001D365B /* VM */,
 				2937DA4E234D459400B95535 /* Controller */,
 				2937DA50234D45D000B95535 /* View */,
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				293F4A63234FC74900ADB105 /* InventoryListModel.xcdatamodeld */,
+				58CB5BE323FB31F00057F878 /* CoreDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				58C093072369397A009159B1 /* FloatingActionButtonRotation.swift in Sources */,
 				293F4A65234FC74900ADB105 /* InventoryListModel.xcdatamodeld in Sources */,
 				293F4A62234FB26800ADB105 /* FloatingActionButtonExtension.swift in Sources */,
+				58CB5BE423FB31F00057F878 /* CoreDataManager.swift in Sources */,
 				2937DA1F234D3BCE00B95535 /* AppDelegate.swift in Sources */,
 				2937DA21234D3BCE00B95535 /* SceneDelegate.swift in Sources */,
 				29A40E4E239BC295008C8591 /* FloatingActionMenuButton.swift in Sources */,
