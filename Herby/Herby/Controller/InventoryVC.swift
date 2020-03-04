@@ -18,6 +18,7 @@ class InventoryVC : UIViewController{
     
 //    var inventoryArrayList = [InventoryListEntity]()
     var inventoryViewModel : InventoryViewModel = InventoryViewModel()
+    var coreDataManagerVM : CoreDataManagerViewModel = CoreDataManagerViewModel()
     //This is for the Core Data Context
 //    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -39,8 +40,9 @@ class InventoryVC : UIViewController{
         
 //        tableView.dataSource = self
 //        tableView.delegate = self
-        inventoryViewModel.loadData()
-        
+//        inventoryViewModel.loadData()
+        coreDataManagerVM.fetchSetupAllPersons()
+        tableView.reloadData()
         menuCloseSetupFAB()
         
         
@@ -93,9 +95,9 @@ class InventoryVC : UIViewController{
 //                let newItem = InventoryListEntity(context: self.context)
 //                textField.rx.text.orEmpty.bind(to: self.inventoryViewModel.text).disposed(by: self.disposeBag)
                 
-                if textField.text!.isEmpty != true {
-                    self.inventoryViewModel.addItemsToList(text: textField.text!)
-                }
+//                if textField.text!.isEmpty != true {
+//                    self.inventoryViewModel.addItemsToList(text: textField.text!)
+//                }
                 
 //                self.tableView.reloadData()
 //                self.inventoryViewModel.x()
@@ -128,7 +130,7 @@ class InventoryVC : UIViewController{
                 // Fallback on earlier versions
             }
 
-            self.customSaveDataItem()
+//            self.customSaveDataItem()
     
             
             }).disposed(by: disposeBag)
@@ -145,12 +147,16 @@ class InventoryVC : UIViewController{
             (act) in
 
              //this is NSManger obj for every new item
-             let newItem = InventoryListEntity(context: self.inventoryViewModel.context)
+//             let newItem = InventoryListEntity(context: self.inventoryViewModel.context)
+//            let newItem = InventoryListEntity(context: CoreDataManager.coreDataSharedManager.persistentContainer.viewContext)
 
              if textField.text!.isEmpty != true {
-                 newItem.name = textField.text!
-                 self.inventoryViewModel.inventoryArrayList.append(newItem)
-                 self.customSaveDataItem()
+//                 newItem.name = textField.text!
+//                 self.inventoryViewModel.inventoryArrayList.append(newItem)
+                self.coreDataManagerVM.insertNewData(itemName: textField.text!)
+//                self.coreDataManagerVM.insertData(itemName: textField.text!)
+                self.tableView.reloadData()
+//                 self.customSaveDataItem()
              }
          }
          let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
@@ -174,9 +180,8 @@ class InventoryVC : UIViewController{
          } else {
              // Fallback on earlier versions
          }
-         print("+++> \(alert.view.subviews.count)")
-
-         customSaveDataItem()
+        coreDataManagerVM.fetchSetupAllPersons()
+        customSaveDataItem()
     }
     
 }
@@ -185,12 +190,15 @@ class InventoryVC : UIViewController{
 extension InventoryVC : UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        inventoryViewModel.inventoryArrayList.count
+        self.coreDataManagerVM.inventoryArrayList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TablViewCellID", for: indexPath)
-        cell.textLabel?.text = inventoryViewModel.inventoryArrayList[indexPath.row].name
+//        cell.textLabel?.text = inventoryViewModel.inventoryArrayList[indexPath.row].name
+        var s = coreDataManagerVM.inventoryArrayList[indexPath.row].value(forKeyPath: "name") as? String
+        cell.textLabel?.text = coreDataManagerVM.inventoryArrayList[indexPath.row].value(forKeyPath: "name") as? String
+        print("======> \(indexPath.row) -----> \(self.coreDataManagerVM.inventoryArrayList.count) -----> \(s!)")
         return cell
     }
 
@@ -217,7 +225,8 @@ extension InventoryVC {
         
         // action one
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            self.editTextInventoryArrayList(text: (self.inventoryViewModel.inventoryArrayList[indexPath.row].name)!,  indexPath: indexPath)
+            self.editTextInventoryArrayList(text: self.coreDataManagerVM.inventoryArrayList[indexPath.row].value(forKey: "name") as! String,  indexPath: indexPath)
+            
         })
         editAction.backgroundColor = UIColor.blue
 
@@ -237,11 +246,10 @@ extension InventoryVC {
 
      @available(iOS 11.0, *)
      func editIconeAction(at indexPath : IndexPath) -> UIContextualAction {
-        _ = inventoryViewModel.inventoryArrayList[indexPath.row]
+//        _ = inventoryViewModel.inventoryArrayList[indexPath.row]
          let action = UIContextualAction(style: .normal, title: "Edit") {
             (action, view, completion) in
-            self.editTextInventoryArrayList(text: (self.inventoryViewModel.inventoryArrayList[indexPath.row].name)!,  indexPath: indexPath)
-            
+            self.editTextInventoryArrayList(text: (self.coreDataManagerVM.inventoryArrayList[indexPath.row].value(forKey: "name")) as! String,  indexPath: indexPath)
             
             completion(true)
          }
@@ -253,19 +261,20 @@ extension InventoryVC {
      
      @available(iOS 11.0, *)
      func deleteIconeAction(at indexPath : IndexPath) -> UIContextualAction {
-        _ = inventoryViewModel.inventoryArrayList[indexPath.row]
-         let action = UIContextualAction(style: .normal, title: "Delete") {
+        var item = coreDataManagerVM.inventoryArrayList[indexPath.row]
+        let action = UIContextualAction(style: .normal, title: "Delete") {
              (action, view, completion) in
-             
-             self.customDeleteItem(indexPath: indexPath)
+            self.coreDataManagerVM.delete(itemListEntity: item as! InventoryListEntity)
+            self.coreDataManagerVM.inventoryArrayList.remove(at: indexPath.row)
+            self.customDeleteItem(indexPath: indexPath)
              completion(true)
          }
          
          action.image = #imageLiteral(resourceName: "icons8-delete-bin-40")
          action.backgroundColor = self.inventoryViewModel.hexStringToUIColor(hex: "#ff0200")
+//         self.customDeleteItem(indexPath: indexPath)
          return action
      }
-    
 }
 
 
@@ -279,7 +288,7 @@ extension InventoryVC {
     
     func editTextInventoryArrayList(text : String = "", indexPath : IndexPath) {
         var textField = UITextField()
-
+        var item = coreDataManagerVM.inventoryArrayList[indexPath.row]
         let alert =  UIAlertController(title: "Edit item", message: "Please edit your inventory item.", preferredStyle: .alert)
 
         let action = UIAlertAction(title: "ok", style: .default) {
@@ -290,7 +299,9 @@ extension InventoryVC {
 
             if textField.text!.isEmpty != true {
 //                newItem.name = textField.text!
-                self.inventoryViewModel.inventoryArrayList[indexPath.row].name = textField.text!
+//                self.inventoryViewModel.inventoryArrayList[indexPath.row].name = textField.text!
+                self.coreDataManagerVM.inventoryArrayList[indexPath.row].setValue(textField.text!, forKey: "name")
+                self.coreDataManagerVM.update(itemName: textField.text!, inventoryListEntity: item as! InventoryListEntity)
                 self.customSaveDataItem()
             }
         }
@@ -321,14 +332,14 @@ extension InventoryVC {
     }
     
     func customSaveDataItem() {
-        inventoryViewModel.saveData()
+//        inventoryViewModel.saveData()
         tableView.reloadData()
     }
 
     func customDeleteItem(indexPath: IndexPath) {
         self.inventoryViewModel.deletingItems(indexPath: indexPath)
         self.tableView.deleteRows(at: [indexPath], with: .left)
-        self.inventoryViewModel.saveData()
+//        self.inventoryViewModel.saveData()
     }
     
 //    func customLoadDataItem(request : NSFetchRequest<InventoryListEntity> = nil) {

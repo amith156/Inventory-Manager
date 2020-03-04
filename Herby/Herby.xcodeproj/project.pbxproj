@@ -23,6 +23,7 @@
 		29E02DBD234E076B002A8821 /* ShoppingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E02DBC234E076B002A8821 /* ShoppingListVC.swift */; };
 		29E02DBF234E0900002A8821 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E02DBE234E0900002A8821 /* AccountVC.swift */; };
 		445BC83AADFB5DB82BA84997 /* Pods_HerbyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E8143B7DDF2EB9FBC22D7F /* Pods_HerbyTests.framework */; };
+		58579F502401ACC5002507F4 /* CoreDataManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58579F4F2401ACC5002507F4 /* CoreDataManagerViewModel.swift */; };
 		58C093072369397A009159B1 /* FloatingActionButtonRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C093062369397A009159B1 /* FloatingActionButtonRotation.swift */; };
 		58C093092369CBB7009159B1 /* CircleViewForFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C093082369CBB7009159B1 /* CircleViewForFloatingActionButton.swift */; };
 		58CB5BE423FB31F00057F878 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CB5BE323FB31F00057F878 /* CoreDataManager.swift */; };
@@ -70,6 +71,7 @@
 		29E02DBC234E076B002A8821 /* ShoppingListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListVC.swift; sourceTree = "<group>"; };
 		29E02DBE234E0900002A8821 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		46E8143B7DDF2EB9FBC22D7F /* Pods_HerbyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HerbyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58579F4F2401ACC5002507F4 /* CoreDataManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerViewModel.swift; sourceTree = "<group>"; };
 		58C093062369397A009159B1 /* FloatingActionButtonRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButtonRotation.swift; sourceTree = "<group>"; };
 		58C093082369CBB7009159B1 /* CircleViewForFloatingActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewForFloatingActionButton.swift; sourceTree = "<group>"; };
 		58CB5BE323FB31F00057F878 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			children = (
 				293F4A63234FC74900ADB105 /* InventoryListModel.xcdatamodeld */,
 				58CB5BE323FB31F00057F878 /* CoreDataManager.swift */,
+				58579F4F2401ACC5002507F4 /* CoreDataManagerViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				29A40E4E239BC295008C8591 /* FloatingActionMenuButton.swift in Sources */,
 				29E02DBB234E0520002A8821 /* InventoryVC.swift in Sources */,
 				29E02DBF234E0900002A8821 /* AccountVC.swift in Sources */,
+				58579F502401ACC5002507F4 /* CoreDataManagerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
